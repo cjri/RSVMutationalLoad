@@ -21,3 +21,6 @@ A variety of options can be specified in the command line.
 --mut_change : Sets the fold-change in the mutation rate.  Default 2
 
 --s : Fitness cost of a mutation.  A virus with k mutations has fitness s^k.
+
+
+The output of the code is given in terms of a generation number, the mutational load, and the mean fitness of the viral population.

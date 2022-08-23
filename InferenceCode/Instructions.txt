@@ -1,0 +1,60 @@
+This code infers a simple model of changes in mutation rate in a population given data describing changes in mutational load collected from time-resolved data.
+
+The code can be compiled from the command line:
+
+make basic
+
+The code makes use of the GSL library.  It can be run from the command line:
+
+./run_basic <options>
+
+A number of options can be specified:
+
+--freqs <frequency_file>
+
+This specifies the name of a file containing mutational load data.  Data in this file should be provided in space-separated columns, in the format:
+
+Day	MutationalLoad
+
+--treat <treatment_file>
+
+This specifies the name of a file containing information about the treatment used to treat the individual.  Data in this file should be provided in tab-separated columns, in the format
+
+Day	TypeOfTreatment
+
+Here the day gives the first day on which a specific type of treatment was used, while the type of treatment is given by a numerical value.  A mutation rate will be inferred for each type of treatment.
+
+The file Treatment_Favi.dat provides an example of this:
+
+0       0
+72      1
+99      2
+127     1
+
+Data began to be collected on day 0 (in the notation of the program), with no treatment.
+On day 72 ribavirin was given (treatment code 1)
+On day 99 this was altered to favipiravir+ribavirin (treatment code 2)
+On day 127 this was reverted to just ribavirin
+
+In this case nitazoxanide was not given a distinct code due to lack of evidence for it having mutagenic properties.
+
+--g <generation time> : Specify a generation time for the virus in units of hours.  The default value is 12 hours.
+
+
+Output:
+
+The output from the code contains a number of values:
+
+1. An initial allele frequency
+
+2. Inferred parameters for the model.  These are in the format:
+
+i) Mutation rates in order of treatment type, in units of mutations per genome per generation.  One mutation rate is inferred for each type of treatment.
+
+ii) A (harmonic) mean fitness cost per mutation, inferred under a multiplicative model [i.e. the fitness of a virus with k mutations is (1-s)^k]a
+
+iii) Generation time in hours
+
+iv) Fit to the data expressed as an RMSD value.
+
+Examples: The scripts run_favi.sh and run_nofavi.sh allow the recreation of inferences with and without specific mutation rates assigned to the favipiravir and ribavirin combinations. 
