@@ -1,0 +1,23 @@
+This code uses a Wright-Fisher-type model to simulate the evolution of a population of infinite size evolving under mutational load, and allowing for a change in the mutation rate.  Evolution proceeds in a deterministic manner, with mutation between fitness classes being modelled using a Poisson distribution.
+
+The code makes use of the GSL library and can be compiled with the command line:
+
+make sim_i
+
+and run from the command line:
+
+./comp_sim_infinite <options>
+
+A variety of options can be specified in the command line.
+
+--g : Number of generations to simulate in an initial calculation
+
+--u : Initial mutation rate in number of mutations per genome.  Default 0.1
+
+--jump : Setting this flag to 1 models a second set of generations beyond the initial calculation.  At time p.t_jump generations into this period, a change is made to the mutation rate, multiplying it by a value p.mut_change.
+
+--t_jump : Sets the time of the change in mutation rate.  Default 30
+
+--mut_change : Sets the fold-change in the mutation rate.  Default 2
+
+--s : Fitness cost of a mutation.  A virus with k mutations has fitness s^k.
