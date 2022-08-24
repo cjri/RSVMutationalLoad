@@ -57,4 +57,11 @@ iii) Generation time in hours
 
 iv) Fit to the data expressed as an RMSD value.
 
-Examples: The scripts run_favi.sh and run_nofavi.sh allow the recreation of inferences with and without specific mutation rates assigned to the favipiravir and ribavirin combinations. 
+3. Output of the fit to the data.  Data show in three columns:
+
+Time_of_sample(days)	Observed_mutational_load	Inferred_model	
+
+
+Examples:
+
+The scripts run_favi.sh and run_nofavi.sh allow the recreation of inferences with and without specific mutation rates assigned to the favipiravir and ribavirin combinations. 

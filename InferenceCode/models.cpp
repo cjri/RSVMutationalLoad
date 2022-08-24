@@ -71,7 +71,7 @@ double OptimiseModel1 (run_params p, vector<int>& times, vector<double>& ratios,
     }
     p.s=s_best;
     mu=mu_best;
-    cout << "Size of mu is " << mu.size() << "\n";
+    //cout << "Size of mu is " << mu.size() << "\n";
     GetFuncParamsSimple(p,mu,med,fp);
     FindOffsetsSimple(p,mu,med,fp);
     if (p.verb==1) {
